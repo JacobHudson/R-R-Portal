@@ -1,0 +1,21 @@
+# Visual Studio Integration
+.vs/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Packages
+*.nuget.props
+*.nuget.targets
