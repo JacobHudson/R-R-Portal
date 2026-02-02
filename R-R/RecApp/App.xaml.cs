@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace ReceptionFrontend;
+namespace RecApp;
 
 /// <summary>
 /// Interaction logic for App.xaml
