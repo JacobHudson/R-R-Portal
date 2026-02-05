@@ -26,7 +26,7 @@ public partial class MainWindow : Window
             Dispatcher.Invoke(() =>
             {
                 Requests.Insert(0, request); 
-                System.Media.SystemSounds.Beep.Play(); // Alert the receptionist!
+                System.Media.SystemSounds.Beep.Play();
             });
         });
 
@@ -41,12 +41,12 @@ public partial class MainWindow : Window
             {
                 await _connection.StartAsync();
                 System.Diagnostics.Debug.WriteLine("Connected to SignalR hub.");
-                MessageBox.Show("Connected!");
+                MessageBox.Show("Connected to hub");
                 break;
             }
             catch (Exception ex)
             {
-                await Task.Delay(5000); // Wait before retrying
+                await Task.Delay(5000);
                 MessageBox.Show($"Connection failed: {ex.Message}, reattempting...");
             }
         }
