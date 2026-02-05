@@ -17,7 +17,7 @@ public partial class MainWindow : Window
         RequestsGrid.ItemsSource = Requests;
 
         _connection = new HubConnectionBuilder()
-            .WithUrl("http://localhost:7095/requestHub")
+            .WithUrl("https://localhost:7095/requestHub")
             .WithAutomaticReconnect()
             .Build();
 
@@ -26,7 +26,7 @@ public partial class MainWindow : Window
             Dispatcher.Invoke(() =>
             {
                 Requests.Insert(0, request); 
-                //System.Media.SystemSounds.Beep.Play(); // Alert the receptionist!
+                System.Media.SystemSounds.Beep.Play(); // Alert the receptionist!
             });
         });
 
@@ -35,13 +35,20 @@ public partial class MainWindow : Window
 
     private async void StartConnection()
     {
-        try
+        while (true)
         {
-            await _connection.StartAsync();
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show($"Connection failed: {ex.Message}");
+            try
+            {
+                await _connection.StartAsync();
+                System.Diagnostics.Debug.WriteLine("Connected to SignalR hub.");
+                MessageBox.Show("Connected!");
+                break;
+            }
+            catch (Exception ex)
+            {
+                await Task.Delay(5000); // Wait before retrying
+                MessageBox.Show($"Connection failed: {ex.Message}, reattempting...");
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Backend.Hubs
     {
         public async Task SendRequest(ServiceRequest request)
         {
-            await Clients.All.SendAsync("ReceiveRequest", request);
+            await Clients.All.SendAsync("ReceiveNewRequest", request);
         }
     }
 }

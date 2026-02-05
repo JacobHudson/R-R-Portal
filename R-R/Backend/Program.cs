@@ -25,6 +25,7 @@ app.UseHttpsRedirection();
 app.UseCors();
 app.UseAuthorization();
 app.MapControllers();
+app.UseRouting();
 app.MapHub<RequestHub>("/requestHub");
 
 app.Run();
